@@ -31,7 +31,7 @@
                 methods: {
                     addTodo() {
                         this.todos.push({
-                            id: this.todos.length,
+                            id: this.todos[-1].id + 1,
                             text: this.newText,
                         });
                     },
