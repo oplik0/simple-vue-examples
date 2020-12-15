@@ -11,8 +11,9 @@
         <div id="todoApp">
             <ol class="todos">
                 <todo-item
-                    v-for="todo in todos"
+                    v-for="(todo, index) in todos"
                     :todo="todo"
+                    :index="index"
                     :key="todo.id"
                     @delete="deleteTodo"
                 >
@@ -41,10 +42,10 @@
             };
             const app = Vue.createApp(Main);
             const ToDo = {
-                props: ["todo"],
+                props: ["todo", "index"],
                 methods: {
                     deleteTodo() {
-                        this.$emit("delete", this.todo.id);
+                        this.$emit("delete", this.index);
                     },
                 },
                 template: `<li>{{ todo.text }} 
