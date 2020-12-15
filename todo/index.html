@@ -26,12 +26,12 @@
         <script>
             const Main = {
                 data() {
-                    return { todos: [], newText: "" };
+                    return { todos: [], newText: "", nextId: 0 };
                 },
                 methods: {
                     addTodo() {
                         this.todos.push({
-                            id: this.todos[-1].id + 1,
+                            id: this.nextId++,
                             text: this.newText,
                         });
                     },
