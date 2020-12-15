@@ -1,0 +1,10 @@
+body {
+    padding: 5vh 20%;
+    color: #41b883;
+    background-color: #35495e;
+}
+@media screen and (max-width: 600px) {
+    body {
+        padding: 5vh 0;
+    }
+}

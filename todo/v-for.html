@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unkpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="../style.css" />
+        <title>v-for</title>
+    </head>
+    <body>
+        <div id="todoApp">
+            <ol class="todos">
+                <todo-item v-for="todo in todos" :todo="todo" :key="todo.id">
+                </todo-item>
+            </ol>
+        </div>
+
+        <script>
+            const Main = {
+                data() {
+                    return {
+                        todos: [
+                            { id: 0, text: "Welcome the world" },
+                            { id: 1, text: "Make more todos" },
+                            { id: 2, text: "Przetłumaczyć poprzednie teksty" },
+                        ],
+                    };
+                },
+            };
+            const app = Vue.createApp(Main);
+            const ToDo = {
+                props: ["todo"],
+                template: `<li>{{ todo.text }}</li>`,
+            };
+            app.component("todo-item", ToDo);
+            app.mount("#todoApp");
+        </script>
+    </body>
+</html>

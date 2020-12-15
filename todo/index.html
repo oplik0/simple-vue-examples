@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unkpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="../style.css" />
+        <title>Todo</title>
+    </head>
+    <body>
+        <div id="todoApp">
+            <ol class="todos">
+                <todo-item
+                    v-for="todo in todos"
+                    :todo="todo"
+                    :key="todo.id"
+                    @delete="deleteTodo"
+                >
+                </todo-item>
+            </ol>
+            <input v-model="newText" />
+            <button v-on:click="addTodo">Dodaj</button>
+        </div>
+
+        <script>
+            const Main = {
+                data() {
+                    return { todos: [], newText: "" };
+                },
+                methods: {
+                    addTodo() {
+                        this.todos.push({
+                            id: this.todos.length,
+                            text: this.newText,
+                        });
+                    },
+                    deleteTodo(event, index) {
+                        this.todos.splice(index, 1);
+                    },
+                },
+            };
+            const app = Vue.createApp(Main);
+            const ToDo = {
+                props: ["todo"],
+                methods: {
+                    deleteTodo() {
+                        this.$emit("delete", this.todo.id);
+                    },
+                },
+                template: `<li>{{ todo.text }} 
+                <button v-on:click="deleteTodo">
+                    Usuń
+                  </button>
+              </li>`,
+            };
+            app.component("todo-item", ToDo);
+            app.mount("#todoApp");
+        </script>
+    </body>
+</html>

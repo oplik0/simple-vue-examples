@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unkpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="../style.css" />
+        <title>Obsługa kliknięć</title>
+    </head>
+    <body>
+        <div id="clicks">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Odwróć wiadomość</button>
+        </div>
+        <script>
+            const Clicks = {
+                data() {
+                    return { message: "Hello world!" };
+                },
+                methods: {
+                    reverseMessage() {
+                        this.message = this.message
+                            .split("")
+                            .reverse()
+                            .join("");
+                    },
+                },
+            };
+
+            Vue.createApp(Clicks).mount("#clicks");
+        </script>
+    </body>
+</html>

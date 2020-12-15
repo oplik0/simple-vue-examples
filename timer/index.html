@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unkpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="../style.css" />
+        <title>Timer</title>
+    </head>
+    <body>
+        <div id="timer">Timer: {{ timer }}s</div>
+        <script>
+            const Timer = {
+                data() {
+                    return { timer: 0 };
+                },
+                mounted() {
+                    setInterval(() => {
+                        this.timer++;
+                    }, 1000);
+                },
+            };
+            Vue.createApp(Timer).mount("#timer");
+        </script>
+    </body>
+</html>

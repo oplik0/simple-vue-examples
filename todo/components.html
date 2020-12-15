@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unkpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="../style.css" />
+        <title>Komponenty - wstęp</title>
+    </head>
+    <body>
+        <div id="todoApp">
+            <ol class="todos">
+                <p>{{ message }}</p>
+                <todo-item></todo-item>
+            </ol>
+        </div>
+
+        <script>
+            const Main = {
+                data() {
+                    return { message: "Hello world!" };
+                },
+            };
+            const app = Vue.createApp(Main);
+            const ToDo = {
+                data() {
+                    return { todo: "Hello world!" };
+                },
+                template: `<li>{{ todo }}</li>`,
+            };
+            app.component("todo-item", ToDo);
+            app.mount("#todoApp");
+        </script>
+    </body>
+</html>

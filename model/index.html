@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unkpkg.com/vue@next"></script>
+        <link rel="stylesheet" href="../style.css" />
+        <title>v-model</title>
+    </head>
+    <body>
+        <div id="model">
+            <p>{{ message }}</p>
+            <input v-model="message" />
+        </div>
+
+        <script>
+            const Model = {
+                data() {
+                    return { message: "Hello world!" };
+                },
+            };
+
+            Vue.createApp(Model).mount("#model");
+        </script>
+    </body>
+</html>
