@@ -19,7 +19,7 @@
                 >
                 </todo-item>
             </ol>
-            <input v-model="newText" />
+            <input @keyup.enter="addTodo" on:v-model="newText" />
             <button v-on:click="addTodo">Dodaj</button>
         </div>
 
